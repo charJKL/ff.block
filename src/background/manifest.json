@@ -1,0 +1,17 @@
+{
+	"manifest_version": 3,
+	"name": "Firefox Block Addon",
+	"description": "Firefox block addon",
+	"version": "1.0",
+	"browser_specific_settings":
+	{
+		"gecko":{
+			"id": "ff.addon@block"
+		}
+	},
+	"background":
+	{
+		"scripts": ["./background.index.js"],
+		"persistent": false
+	}
+}
