@@ -1,8 +1,15 @@
-const path = require('path');
+const CopyPlugin = require("copy-webpack-plugin");
+
+const CopyManifestFileConfig = {patterns: [{from: "./src/background/manifest.json", to: "./manifest.json" }]};
+const CopyManifestFilePlugin = new CopyPlugin(CopyManifestFileConfig);
 
 module.exports = 
 {
-	entry: `${__dirname}/src/background/background.index.ts`,
+	mode: "production",
+	entry: 
+	{
+		main:`${__dirname}/src/background/background.index.ts`, 
+	},
   output:
 	{
 		path: `${__dirname}/build`,
@@ -14,6 +21,9 @@ module.exports =
 			{ test: /\.ts$/, use: "ts-loader", exclude: /node_modules/ }
 		]
 	},
-	mode: "production"
+	plugins:
+	[
+		CopyManifestFilePlugin,
+	]
 }
 
