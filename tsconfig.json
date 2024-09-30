@@ -6,7 +6,6 @@
 		"moduleResolution": "NodeNext",
 		"jsx": "react-jsx",
 		
-		"baseUrl": "./",
 		"strict": true,
 		"esModuleInterop": true,
 		"skipLibCheck": true,
