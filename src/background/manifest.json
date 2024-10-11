@@ -9,6 +9,21 @@
 			"id": "ff.addon@block"
 		}
 	},
+	"permissions":
+	[
+		"declarativeNetRequest",
+		"declarativeNetRequestFeedback",
+		"unlimitedStorage", 
+		"storage"
+	],
+	"host_permissions":
+	[
+		"<all_urls>"
+	],
+	"web_accessible_resources":
+	[
+		{ "resources": ["html/blocked/*"], "matches": ["<all_urls>"] }
+	],
 	"background":
 	{
 		"scripts": ["./background.index.js"]

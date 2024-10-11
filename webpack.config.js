@@ -1,6 +1,12 @@
 const CopyPlugin = require("copy-webpack-plugin");
 
-const CopyManifestFileConfig = {patterns: [{from: "./src/background/manifest.json", to: "./manifest.json" }]};
+const CopyManifestFileList = 
+[
+	{from: "./src/background/manifest.json", to: "./manifest.json" },
+	{from: "./src/foreground/html/blocked/*", to: "./html/blocked/[name][ext]" },
+	{from: "./src/foreground/html/settings/*", to: "./html/settings/[name][ext]" },
+]
+const CopyManifestFileConfig = {patterns: CopyManifestFileList};
 const CopyManifestFilePlugin = new CopyPlugin(CopyManifestFileConfig);
 
 module.exports = 
@@ -12,8 +18,9 @@ module.exports =
 	},
   output:
 	{
+		clean: true,
 		path: `${__dirname}/build`,
-		filename: `background.index.js`
+		filename: `background.index.js`,
   },
 	module:
 	{
