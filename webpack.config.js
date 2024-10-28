@@ -1,4 +1,5 @@
 const CopyPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const CopyManifestFileList = 
 [
@@ -7,7 +8,8 @@ const CopyManifestFileList =
 	{from: "./src/foreground/html/settings/*.html", to: "./html/settings/[name][ext]" },
 ]
 const CopyManifestFileConfig = {patterns: CopyManifestFileList};
-const CopyManifestFilePlugin = new CopyPlugin(CopyManifestFileConfig);
+const CopyManifestFilePluginInstance = new CopyPlugin(CopyManifestFileConfig);
+const MiniCssExtractPluginInstance = new MiniCssExtractPlugin();
 
 // TODO static pages should be in separate configuration 
 module.exports = 
@@ -32,11 +34,12 @@ module.exports =
 	{
 		rules: [
 			{ test: /(\.ts|\.tsx)$/, use: ["ts-loader"], exclude: /node_modules/ },
-			{ test: /(\.css)$/, use: ["style-loader", "css-loader"] }
+			{ test: /(\.css)$/, use: [MiniCssExtractPlugin.loader, {loader: "css-loader"}] }
 		]
 	},
 	plugins:
 	[
-		CopyManifestFilePlugin,
+		CopyManifestFilePluginInstance,
+		MiniCssExtractPluginInstance
 	]
 }
