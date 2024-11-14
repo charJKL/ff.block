@@ -1,7 +1,7 @@
 import { AddonLifecycle as ApiAddonLifecycle, InstaltionDetails } from "@charjkl/browser.std/backend";
 import { NetRequestBlock as ApiNetRequestBlock } from "@charjkl/browser.std/backend";
 import { BackendComm as ApiBackendComm } from "@charjkl/browser.std/backend";
-import type { SupportedMessages, SupportedNotifications, Rule } from "../CommProtocol";
+import { InstallationDetails } from "@charjkl/browser.std/backend";
 
 // Settings:
 const settingsPagePath = browser.runtime.getURL("/html/settings/settings.html");
@@ -18,7 +18,7 @@ type Res = browser.declarativeNetRequest.ResourceType;
 
 namespace Lifecycle
 {
-	export async function OnInstalledDebugNotice(details: InstaltionDetails) // TODO delete this, is here only for debug
+	export async function OnInstalledDebugNotice(details: InstallationDetails) // TODO delete this, is here only for debug
 	{
 		try
 		{
@@ -47,8 +47,8 @@ namespace Lifecycle
 		console.log("Background.index.tx", "suspending");
 	}
 }
-AddonLifecycle.Installed.add(Lifecycle.OnInstalledDebugNotice); // TODO delete this, is here only for debug
-AddonLifecycle.Suspending.add(Lifecycle.OnSuspendingDebugNotice); // TODO delete this, is here only for debug
+AddonLifecycle.Installed.addListener(Lifecycle.OnInstalledDebugNotice); // TODO delete this, is here only for debug
+AddonLifecycle.Suspending.addListener(Lifecycle.OnSuspendingDebugNotice); // TODO delete this, is here only for debug
 
 
 
