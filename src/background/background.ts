@@ -1,6 +1,7 @@
-import { AddonLifecycle as ApiAddonLifecycle, InstaltionDetails } from "@charjkl/browser.std/backend";
+import { AddonLifecycle as ApiAddonLifecycle } from "@charjkl/browser.std/backend";
 import { NetRequestBlock as ApiNetRequestBlock } from "@charjkl/browser.std/backend";
 import { BackendComm as ApiBackendComm } from "@charjkl/browser.std/backend";
+import type { CommProtocol, Rule } from "../CommProtocol";
 import { InstallationDetails } from "@charjkl/browser.std/backend";
 
 // Settings:
@@ -11,7 +12,7 @@ const blockPagePath = browser.runtime.getURL("/html/blocked/blocked.html");
 // Api instances:
 const AddonLifecycle = new ApiAddonLifecycle();
 const NetRequestBlock = new ApiNetRequestBlock(blockPagePath);
-const BackendComm = new ApiBackendComm<SupportedMessages, SupportedNotifications>();
+const BackendComm = new ApiBackendComm<CommProtocol>();
 
 type Res = browser.declarativeNetRequest.ResourceType;
 

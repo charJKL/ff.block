@@ -1,17 +1,14 @@
-import type { AddonScriptApiMethod, AddonScriptApiNotification } from "@charjkl/browser.std/backend"
+import type { MessageToBackend, MessageToFrontend } from "@charjkl/browser.std/backend"
 
 export type Rule = { id: number, regexp: string }; // TODO this will come from service
 type Rules = Array<Rule>;
 type RulesChangedInfo = {};
 
-export type SupportedMessages = 
+export type CommProtocol =
 {
-	"GetRules": AddonScriptApiMethod<[], Rules>;
-	"AddRule": AddonScriptApiMethod<[Rule], Rule>;
-	"ChangeRule": AddonScriptApiMethod<[Rule], Rule>;
-}
-
-export type SupportedNotifications =
-{
-	"RulesChanged": AddonScriptApiNotification<[]>;
+	"GetRules": MessageToBackend<() => Rules>;
+	"AddRule": MessageToBackend<(rule: Rule) => Rule>;
+	"ChangeRule": MessageToBackend<(rule: Rule) => Rule>;
+	
+	"RulesChanged": MessageToFrontend<() => Rules>;
 }
