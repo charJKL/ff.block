@@ -1,5 +1,5 @@
 import { RulesList } from "./main/RulesList";
-import * as css from "./Main.module.css";
+import css from "./Main.module.scss";
 
 export function Main()
 {

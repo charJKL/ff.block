@@ -4,14 +4,17 @@ import { useEffect, useState } from "react";
 
 export function RulesList()
 {
-	const [rules, setRules] = useState<any>([]);
+	const [rules, setRules] = useState<any[]>([]);
 	
 	const frontendComm = new ApiFrontendComm<CommProtocol>();
 	
 	
 	useEffect(() => {
 		frontendComm.sendMessage("GetRules").then((rules) => {
-			setRules(rules);
+			if(rules instanceof Array)
+			{
+				setRules(rules);
+			}
 		});
 	}, []);
 	

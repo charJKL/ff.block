@@ -1,4 +1,4 @@
-import * as css from "./Header.module.css";
+import css from "./Header.module.scss";
 
 export function Header()
 {
