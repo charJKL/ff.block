@@ -1,7 +1,7 @@
 import { AddonLifecycle as ApiAddonLifecycle } from "@charjkl/browser.std/backend";
 import { NetRequestBlock as ApiNetRequestBlock } from "@charjkl/browser.std/backend";
 import { BackendComm as ApiBackendComm } from "@charjkl/browser.std/backend";
-import type { CommProtocol, Rule } from "../CommProtocol";
+import type { CommProtocol, Rule } from "$src/CommProtocol";
 import { InstallationDetails } from "@charjkl/browser.std/backend";
 
 // Settings:

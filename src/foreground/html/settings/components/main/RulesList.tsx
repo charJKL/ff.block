@@ -1,5 +1,5 @@
 import { FrontendComm as ApiFrontendComm } from "@charjkl/browser.std/frontend";
-import { CommProtocol } from "../../../../../CommProtocol"; // change base path resolve, I plan about to do it.
+import { CommProtocol } from "$src/CommProtocol";
 import { useEffect, useState } from "react";
 
 export function RulesList()
